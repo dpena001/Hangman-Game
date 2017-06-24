@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hagman Game</title>
+
+    <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+    <!-- Linking js file -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script> 
+
+    <!-- Resetting stylesheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <!-- Linking CSS  -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  </head>
+  <body onload="">
+      <audio id="myaudio" autoplay="autoplay" loop="loop">
+          <source src="assets/images/take-me-out.mp3" type="audio/mpeg">
+      </audio>
+     
+     <header><img src="assets/images/hagman-tittle.gif" width="305">  <div class="text-center">
+        <button class="btn btn-success btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Take me Out..!</button>
+        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+      </div></header> 
+
+      <!-- Left Panel -->
+      <div class="col-lg-6">
+          <div class = "image-scoreboard">
+            <img src="assets/images/lscoreboard_3.png" width="203" height="102">
+             <div id="wins">0</div>
+             <div id="losses">0</div>
+             <div id="guesses">0</div>
+             </img>
+           </div>
+      </div>
+
+     <section>
+     <table>
+     <tr><td width="145"><p>Category:</p></td><td><div id="sofar"></td></tr></div>
+     </table>
+     </section>
+     <aside>
+       <div id="images-div"></div>
+     </aside>
+      
+      <footer>
+        <div class="text-center">
+        <button class="btn btn-default btn-lg play-ball-button"><span class="glyphicon"></span><strong>Play Ball!</strong></strong></button>
+        </div>
+      </footer>
+    </div>
+
+
+    <script>
+
+      // VARIABLES
+      // ==========================================================================
+      var wins = 0;
+      var losses = 0;
+      var guessleft = 9;
+      var sofar ="";
+      var categories = ["MLB_Top_Players","MLB-Stadiums","MLB-Teams","Hall-of Fame-Player","Fielding-Positions","Baseball-Equitments","Baseball-Actions"];
+
+      var baseball = {
+        name:"baseball",
+        MLB_Top_Players : ["Miguel Cabrera","Mike trout","Chris Davis"],
+        MLB_Stadiums : ["Yankee Stadium","Fenway Park","Citi Field"],
+        MLB_Teams : ["New York Yankees","Boston Red Sox", "Miami Marlin"],
+        Hall_of_Fame_Player : ["Joe Di Maggio","Luis Aparicio","Hank Aaron"],
+        Fielding_Positions : ["First baseman","Pitcher","Catcher","Center Field"],
+        Baseball_Equitments : ["Bat","Gloves","ball"],
+        Baseball_Actions : ["hit","strikeout","Home run"],
+      }
+     
+   
+      // MAIN PROCESS
+     $(document).ready(function() {
+
+      $(document).off('keyup keydown keypress');
+
+      // Gets Link for Theme Song
+      var audioElement = document.createElement("audio");
+      audioElement.setAttribute("src", "assets/images/take-me-out.mp3");
+      var audioback = document.getElementById("myaudio");
+
+      
+      // Theme Button
+      $(".theme-button").on("click", function() {
+
+        audioback.pause();
+        audioElement.play();
+      });
+
+      $(".pause-button").on("click", function() {
+        audioElement.pause();
+        audioback.pause();
+      });
+
+      $(".play-ball-button").on("click", function() {
+        audioElement.pause();
+        audioback.pause();
+      });
+
+    });
+
+    // Captures keyboard input. 
+
+     
+        document.onkeyup = function(event) {
+
+        // Captures the key press, converts it to lowercase, and saves it to a variable.
+        var letter = String.fromCharCode(event.keyCode).toLowerCase();
+
+        // Check Guesses left.
+
+          if (guessleft > 1) {
+             if ( letter === whatsthinking(categories)){
+                wins++;
+                guessleft = 9;
+                sofar="";
+                printintoscreen("wins",wins);
+                printintoscreen("guesses",guessleft);
+                printintoscreen("sofar",sofar);
+                //printimagestoscreen("images-div","win");
+             } else
+             {
+                guessleft--;
+                sofar=sofar+" "+letter;
+                printintoscreen("guesses",guessleft);
+                printintoscreen("sofar",sofar);
+                //printimagestoscreen("images-div","guess");
+             }
+          }
+          else
+          {
+            losses++;
+            printintoscreen("losses",losses);
+            sofar="";
+            printintoscreen("sofar",sofar);
+            guessleft = 9;           
+            printintoscreen("guesses",guessleft);
+            //printimagestoscreen("images-div","loser");
+          }
+   
+      };
+    </script>
+  </body>
+</html>

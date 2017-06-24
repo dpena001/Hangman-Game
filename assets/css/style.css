@@ -1,0 +1,124 @@
+body {
+	margin: auto;
+	width: 1024px;
+	position: relative;
+	background-image: url("../images/baseball-field-shadow.jpg");
+	background-position: center;
+	background-repeat: repeat-x;
+}
+
+
+@font-face{
+ font-family:'digital-clock-font';
+ src: url('DS-DIGIB.ttf');
+}
+
+
+h1 {
+	font-size: 25px;
+	font-family: "Helvetica Neue";
+	font-weight: bold;
+	color: #5B9BD5;
+	position: relative;
+}
+
+p {
+	font-size: 15px;
+	font-family: 'digital-clock-font';
+	color: black;
+	font-style: bold;
+	text-align: justify;
+	line-height: 1.5em;
+	padding-top: 3px;
+	padding-left: 1.5%;
+	padding-right: 1.5%;
+	position: relative;
+}
+
+
+header {
+	margin: auto;
+	width: 310px;
+	position: relative;
+}
+
+section {
+	margin-top: 0px;
+	width: 260px;
+	border-width: 2px;
+	border-style: double;
+	border-color: red;
+	text-align: center;
+	vertical-align: middle;
+	float: right;
+	position: relative;
+}
+aside {
+	margin-top: 0px;
+	width: 357px;
+	height: 144px;
+	border-color: #cccccc;
+	text-align: center;
+	vertical-align: middle;
+	float: right;
+	position: relative;
+}
+
+footer {
+	margin:auto;
+	height: 45px;
+    top: 540px;
+    left: 476px;
+	text-align: center;
+	position: absolute; 
+}
+
+table {
+	margin-left: 5px;
+	position: relative;
+}
+
+#wins{
+	font-size: 33px;
+	font-family: "digital-clock-font";
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	background: transparent;
+	top: 22px;
+	left: 34px;
+	position: absolute;
+}
+
+#losses{
+	font-size: 33px;
+	font-family: "digital-clock-font";
+	color: red;
+	font-weight: bold;
+	background: transparent;
+	top: 22px;
+    left: 167px;
+	position: absolute;
+}
+
+#guesses{
+	font-size: 20px;
+	font-family: "digital-clock-font";
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	background: transparent;
+	top: 77px;
+	left: 112px;
+	position: absolute;
+}
+
+#sofar{
+	font-size: 15px;
+	font-family: sans-serif;
+	color: blue;
+	font-weight: bold;
+	position: relative;
+	font-weight: bold;
+	line-height: 1.5em;
+}
